@@ -57,7 +57,9 @@ typedef struct
 }Bag_Struct;
 
 #define ScriptReadByte(ctx) (*((ctx)->scriptPtr++))
+
 #define SPECIAL_GET_LAST_USED_REPEL 0
+#define SPECIAL_TRY_USE_REPEL 1
 
 static void TryUseRepel(ScriptContext *ctx);
 static void GetLastUsedRepel(ScriptContext *ctx);
@@ -65,7 +67,7 @@ static void GetLastUsedRepel(ScriptContext *ctx);
 const SpecialFunc gSpecials[] =
 {
     [SPECIAL_GET_LAST_USED_REPEL] = GetLastUsedRepel,
-    [3] = TryUseRepel,
+    [SPECIAL_TRY_USE_REPEL] = TryUseRepel,
 };
 
 BOOL ScrCmd_special(ScriptContext *ctx)

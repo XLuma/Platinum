@@ -1829,7 +1829,7 @@ use_again:
 	Special SPECIAL_GET_LAST_USED_REPEL
 	TakeItem 0x800c 0x1 0x800d
 	PlayFanfare 0x600
-	Special 3
+	Special SPECIAL_TRY_USE_REPEL
 	SetVarHero 0x0
 	If 0x800c, REPEL
 	CompareLastResultJump EQUAL, repel1
