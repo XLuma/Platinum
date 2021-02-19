@@ -1,7 +1,6 @@
-# About this project
+# Features:
+* Updated repel system
 
-## WARING 
-# Make sure your script NO.211 didn't changed.
 
 # Install
  1.Download and install Devkitpro. 
@@ -21,8 +20,10 @@
 * [**CodenamePU (NARC tool)**][G5T]
 * [**Mikelan98, Nomura (ARM9 Expansion Subroutine )**][ARM9]
 * Rafael Vuijk (Nintendo DS rom tool)
+* [**pret/pokediamond**][pret]
 
 
 [CFRU]: https://github.com/Skeli789/Complete-Fire-Red-Upgrade
 [G5T]: https://github.com/CodenamePU/Gen5Tools
 [ARM9]: https://pokehacking.com/tutorials/ramexpansion/
+[pret]: https://github.com/pret/pokediamond
