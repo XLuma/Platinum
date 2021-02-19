@@ -1,0 +1,11 @@
+GetMonData = 0x02074470 | 1;
+FillWindowPixelBuffer = 0x0201ADA4| 1;
+ConvertNumToString = 0x02090184| 1;
+StringPut = 0x020900D8| 1;
+PutWindows = 0x0201A9A4| 1;/*0801A64C*/
+FreeSystem = 0x02018238| 1;
+sys_AllocMemory = 0x02018144 | 1;
+SaveData_GetDexPtr = 0x02027560 | 1;
+GetEventVar = 0x0203F098 |1;
+GetSaveDataPtr = 0x0202D834 | 1;
+SaveData_GetRepelPtr = 0x0202D9CC | 1;

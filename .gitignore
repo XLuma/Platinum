@@ -1,0 +1,6 @@
+*.o
+*.nds
+build/*
+base/*
+*.ini
+*.bin
