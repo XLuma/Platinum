@@ -10,7 +10,7 @@ import _io
 OFFSET_TO_PUT = 0
 SOURCE_ROM = "rom.nds"
 ROM_NAME = "test.nds"
-OFFSET_START = 0x2fc8000
+OFFSET_START = 0x23c8000
 
 if sys.platform.startswith('win'):
     PathVar = os.environ.get('Path')
