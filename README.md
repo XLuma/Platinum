@@ -1,5 +1,10 @@
 # Features:
-* Updated repel system
+* Updated repel system(thanks Bubble)
+* Offsets have been changed for the arm9 expansion(thanks BluRose)
+
+# Contributing
+You can contribute by making a Pull Request containing your own header files, assembly defines and new functions to rom.ld.
+Make sure to use PRET's naming scheme.
 
 
 # Install
@@ -22,6 +27,7 @@
 * Rafael Vuijk (Nintendo DS rom tool)
 * [**pret/pokediamond**][pret]
 * [**JimB16/PokePlat**][pokeplat]
+* [**Bubble791 for base repo**]
 
 [CFRU]: https://github.com/Skeli789/Complete-Fire-Red-Upgrade
 [G5T]: https://github.com/CodenamePU/Gen5Tools

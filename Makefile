@@ -44,14 +44,17 @@ PYTHON = python
 LINK = build/linked.o
 OUTPUT = build/output.bin
 ####################### Build #########################
+#comment thse lines or replace with your own text files 
 data/msg/213.bin:data/msg/213.txt
 	$(MSGENC) $< data/msg/213.key charmap.txt $@
 
+#comment these lines or replace with your own script files
 data/211.bin:data/211.s
-	@echo -e "\e[32;1mAssembling data/211.s\e[37;1m"
+	@echo -e "\e[32;1mAssembling data/scripts/211.s\e[37;1m"
 	@$(AS) $(ASFLAGS) -c $< -o build/211.o
 	@$(OBJCOPY) -O binary build/211.o data/211.bin
 
+#comment these lines or edit to use your own code instead
 build/repel.o:src/repel.c
 	@mkdir -p build
 	@echo -e "\e[32;1mCompiling src/repel.c\e[37;1m"
