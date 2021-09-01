@@ -111,7 +111,7 @@ def Hook(rom: _io.BufferedReader, space: int, hookAt: int, register=0):
     else:
         data = bytes([0x00, 0x48 | register, 0x00 | (register << 3), 0x47])
 
-    space +=  0x02FC8001
+    space +=  0x023c8001
     data += (space.to_bytes(4, 'little'))
     rom.write(bytes(data))
 
@@ -148,7 +148,7 @@ def FunctionWrap(rom: _io.BufferedReader, space: int, hookAt: int, numParams: in
 def Repoint(rom: _io.BufferedReader, space: int, repointAt: int, slideFactor=0):
     rom.seek(repointAt)
 
-    space += (0x02FC8000 + slideFactor)
+    space += (0x023c8000 + slideFactor)
     data = (space.to_bytes(4, 'little'))
     rom.write(bytes(data))
 
@@ -280,13 +280,13 @@ def main():
         print("Inserting code.")
         table = GetSymbols(GetTextSection())
         with open(OUTPUT, 'rb') as binary:
-            rom.seek(OFFSET_START - 0x02FC8000)
+            rom.seek(OFFSET_START - 0x023c8000)
             rom.write(binary.read())
             binary.close()
 
         # Adjust symbol table
         for entry in table:
-            table[entry] += OFFSET_START - 0x02FC8000
+            table[entry] += OFFSET_START - 0x023c8000
 
         # Insert byte changes
         if os.path.isfile(BYTE_REPLACEMENT):

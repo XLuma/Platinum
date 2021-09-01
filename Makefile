@@ -21,7 +21,7 @@ endif
 default: all
 
 ROMNAME = rom.nds
-BUILDROM = test.nds
+BUILDROM = test.ndscd 
 ####################### Tools #########################
 MSGENC = tools/msgenc$(EXE)
 NITROGFX = tools/nitrogfx$(EXE)
@@ -29,7 +29,7 @@ NDSTOOL = tools/ndstool$(EXE)
 JSONPROC = tools/jsonproc$(EXE)
 O2NARC = tools/o2narc$(EXE)
 
-####################### Seting ########################
+####################### Setting ########################
 PREFIX = bin/arm-none-eabi-
 AS = $(DEVKITARM)/$(PREFIX)as
 CC = $(DEVKITARM)/$(PREFIX)gcc
@@ -44,17 +44,21 @@ PYTHON = python
 LINK = build/linked.o
 OUTPUT = build/output.bin
 ####################### Build #########################
-#comment thse lines or replace with your own text files 
-data/msg/213.bin:data/msg/213.txt
-	$(MSGENC) $< data/msg/213.key charmap.txt $@
 
-#comment these lines or replace with your own script files
-data/211.bin:data/211.s
+############## Text #####################
+##Change the necessary values to your text file
+data/msg/213.bin:data/msg/213.txt
+	$(MSGENC) -e -c charmap.txt $< $@
+
+############## Scripts #####################
+##Change the values so it fits your script files
+data/scripts/211.bin:data/scripts/211.s
 	@echo -e "\e[32;1mAssembling data/scripts/211.s\e[37;1m"
 	@$(AS) $(ASFLAGS) -c $< -o build/211.o
-	@$(OBJCOPY) -O binary build/211.o data/211.bin
+	@$(OBJCOPY) -O binary build/211.o data/scripts/211.bin
 
-#comment these lines or edit to use your own code instead
+############## Code #####################
+##Change the files names so it points to your custom .c file.
 build/repel.o:src/repel.c
 	@mkdir -p build
 	@echo -e "\e[32;1mCompiling src/repel.c\e[37;1m"
@@ -66,7 +70,10 @@ $(LINK):build/repel.o
 $(OUTPUT):$(LINK)
 	@$(OBJCOPY) -O binary $< $@
 
-all:$(OUTPUT) data/211.bin data/msg/213.bin
+
+########## All ###############
+##Make sure to also change the necessary fields in here too !
+all:$(OUTPUT) data/scripts/211.bin data/msg/213.bin
 	@mkdir -p base
 	@rm -rf build/data/*
 	@$(NDSTOOL) -x $(ROMNAME) -9 base/arm9.bin -7 base/arm7.bin -y9 base/overarm9.bin -y7 base/overarm7.bin -d base/root -y base/overlay -t base/banner.bin -h base/header.bin
@@ -80,7 +87,7 @@ all:$(OUTPUT) data/211.bin data/msg/213.bin
 	@rm -rf build/data/*
 	@echo -e "\e[32;1mUnpack scr_seq.narc\e[37;1m"
 	@python scripts/NARCTool.py extract base/root/fielddata/script/scr_seq.narc build/data/
-	@cp data/211.bin build/data/211.bin
+	@cp data/scripts/211.bin build/data/211.bin
 	@python scripts/NARCTool.py compile build/data/ build/
 	@mv build/.narc base/root/fielddata/script/scr_seq.narc
 	@echo -e "\e[32;1mUnpack pl_msg.narc\e[37;1m"

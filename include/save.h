@@ -3,6 +3,14 @@
 
 #include "types.h"
 
+/*******************************/
+/* Save data related functions */
+/* and structs/globals/enums   */
+/* If you add more functions,  */
+/* please commit them to the   */
+/* repo                        */
+/*******************************/
+
 struct save_dex_data
 {
 	u32 unk0;
